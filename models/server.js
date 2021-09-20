@@ -1,4 +1,5 @@
 const express = require('express');
+const { dbConnection } = require('../database/config')
 const cors = require('cors');
 
 class Server {
@@ -8,11 +9,18 @@ class Server {
         this.port = process.env.PORT;
         this.usuarioPATH = '/api/usuarios/';
 
+        // Conectar  a dtb
+        this.conectarDb();
+
         // Middleware. son funciones que add funcionalidad, se ejcuta cuando levantemos nuestro servidor
         this.middlewares();
 
         // Rutas de aplicacion
         this.routes();
+    }
+
+    async conectarDb(){
+        await  dbConnection();
     }
 
     middlewares() {
