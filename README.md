@@ -9,7 +9,9 @@
 2. git init
 3. git add .
 4. git commit -m
-5 para recuperar un archivo git checkout -- .
+5. para recuperar un archivo git checkout -- .
+6. para eliminar el archivo env en produccion git rm .env --cached
+7. nuevamente realizamos el -> git add . -> git commit -m 
 
 # Para crear un release tag en github
 1. git tag
@@ -41,3 +43,14 @@
 
 # middlewares
 es una funcion que se ejecuta antes de llamar un controlador o seguir con nuestra peticiones
+
+
+# Produccion
+1. .gitignore: excluimos el archivo de node_module & el archivo de variables de entorno .env
+2. .example.env el archivo de desarrollo 
+
+# Para ver las variables de entornos en Heroku
+1. cmd -> heroku config
+2. herouku config:set nombre="jorgito"
+3. para crear variables de entorno: heroku config:set nombre="jorgito"
+4. para eliminar una variable de entorno: heroku config:unset nombre
