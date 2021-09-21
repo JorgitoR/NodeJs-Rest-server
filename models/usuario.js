@@ -35,8 +35,9 @@ const UsuarioSchema = Schema({
 
 UsuarioSchema.methods.toJSON = function(){
     //cuando se manda a llamar toJSON se ejecuta la funcion
-    const { __v, password, ...usuario } = this.toObject(); //desestructuramos el objeto, y todo los demas almacenamos en usuario
-    
+    const { __v, password, _id, ...usuario } = this.toObject(); //desestructuramos el objeto, y todo los demas almacenamos en usuario
+    usuario.uid = _id;
+    return usuario
 }
 
-module.exports = model('Usuario', UsuarioSchema); //nombre de la tabla - seguido el esquema UsuarioSchema
+module.exports = model('Usuario', UsuarioSchema); //nombre de la tabla - seguido el esquema UsuarioSchema   

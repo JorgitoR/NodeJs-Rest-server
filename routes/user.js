@@ -1,9 +1,19 @@
 //Rutas relacionadas a los usuarios.
 const { Router} = require('express');
-const { usuarioGet } = require('../controllers/usuarios')
+const { usuarioGet, usuariosDelete } = require('../controllers/usuarios')
+
 const bcryptjs = require('bcryptjs')
 const { check, validationResult } = require('express-validator');
-const { validarCampos } = require('../middlewares/validar-campos');
+
+
+const {
+    validarCampos,
+    validarJWT,
+    esAdminRole,
+    tieneRole
+    
+} = require('../middlewares/index')
+
 const { esRoleValido, existeUsuarioPorId } = require('../helpers/db-validators')
 const Usuario = require('../models/usuario');
 const { model } = require('mongoose');
@@ -98,26 +108,37 @@ router.post('/', [
     }); 
 });
 
+
 router.delete('/:id',[
+    //esAdminRole,
+    validarJWT,
+    // esAdminRole,
+    tieneRole('ADMIN_ROLE', 'VENTAR_ROLE','OTRO_ROLE'),
     check('id', 'No es un ID válido').isMongoId(),
     check('id').custom( existeUsuarioPorId ),
     validarCampos
-    
-], async(req, res) => {
+], usuariosDelete);
+
+
+/*
+async(req, res) => {
 
     const { id } = req.params;
-    const { _id, password, google, ...resto } = req.body;
-
+    
     // Fisicamente lo borramos
     // const usuario = await Usuario.findByIdAndDelete( id );
 
-    const usuario = await Usuario.findByIdAndUpdate( _id, { estado: false } );
+    const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
+
+    //Usuario autenticado
+    const usuarioAutenticado = req.usuario;
 
 
-    res.json(usuario); 
+    res.json({usuario, usuarioAutenticado}); 
 
 
 });
+*/
 
 router.patch('/', (req, res) => {
     res.json({

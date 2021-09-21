@@ -20,6 +20,17 @@ const usuarioGet = async(req = request, res = response) => {
     });
 }
 
+const usuariosDelete = async(req, res = response) => {
+
+    const { id } = req.params;
+    const usuario = await Usuario.findByIdAndUpdate( id, { estado: false } );
+
+    
+    res.json(usuario);
+}
+
+
 module.exports = {
-    usuarioGet
+    usuarioGet,
+    usuariosDelete
 }

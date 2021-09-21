@@ -54,3 +54,7 @@ es una funcion que se ejecuta antes de llamar un controlador o seguir con nuestr
 2. herouku config:set nombre="jorgito"
 3. para crear variables de entorno: heroku config:set nombre="jorgito"
 4. para eliminar una variable de entorno: heroku config:unset nombre
+
+
+# JWT
+1. npm i jsonwebtoken
