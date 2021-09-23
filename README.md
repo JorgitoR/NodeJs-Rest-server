@@ -58,3 +58,42 @@ es una funcion que se ejecuta antes de llamar un controlador o seguir con nuestr
 
 # JWT
 1. npm i jsonwebtoken
+
+#  Google Sign In - Front y BackEnd
+Temas puntuales
+
+1. Generar API Key de Google
+2. Generar API Secret
+3. Usar librerías de Google para la validación de tokens
+4. Tips importantes en PostMan
+5. Despliegues a Heroku
+6. Uso del Google SignIn en el Front-End
+7. Crear usuarios personalizados en base a respuestas de Google
+
+# Google Identity
+-> https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid
+
+# Categorias y productos.
+1. Tareas
+2. CRUD de categorías y productos
+3. Relaciones
+4. Populate
+5. Búsquedas
+
+
+# Para crear nuestra coleccion en la base de datos es en models.
+
+# Seccion 13. Temas relacionados
+1. Carga de archivos
+2. Validaciones de archivos
+3. Re-ubicar archivos
+4. Actualizar fotografía de un usuario
+5. Borrar archivos
+6. Cargar imágenes a los productos
+7. Servicio para mostrar y proteger imágenes
+8. Uso de dichas imágenes en el front-end
+9. Cloudinary
+10.  Cloudinary SDK
+
+-> para subir archivos  express-fileupload
+-> async para realizar validaciones en base de datos
